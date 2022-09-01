@@ -9,11 +9,13 @@ const toggleDialog = () => {
 </script>
 
 <template>
-  <v-app class="bg-indigo-lighten-4">
+  <v-app class="bg-primary">
     <AppBar @toggle-dialog="toggleDialog" />
     <AboutDialog :dialogActive="dialogActive" />
     <v-main>
-      <RouterView />
+      <v-container>
+        <RouterView />
+      </v-container>
     </v-main>
   </v-app>
 </template>
