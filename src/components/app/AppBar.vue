@@ -15,10 +15,10 @@ defineEmits(['toggle-dialog'])
     </h1>
     <v-spacer></v-spacer>
     <v-spacer></v-spacer>
-    <v-btn icon @click="$emit('toggle-dialog')">
+    <v-btn icon>
       <v-icon>mdi-plus</v-icon>
     </v-btn>
-    <v-btn icon>
+    <v-btn icon @click="$emit('toggle-dialog')">
       <v-icon>mdi-information-variant</v-icon>
     </v-btn>
     <v-spacer></v-spacer>
