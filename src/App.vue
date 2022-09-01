@@ -1,16 +1,8 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const drawerActive = ref(false)
-const toggleDrawer = () => {
-  drawerActive.value = !drawerActive.value
-}
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <v-app class="bg-indigo-lighten-4">
-    <AppBar @toggle-drawer="toggleDrawer" />
-    <AppNavigationDrawer :drawerActive="drawerActive" />
+    <AppBar />
     <v-main>
       <RouterView />
     </v-main>
