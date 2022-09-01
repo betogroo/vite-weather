@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+defineEmits(['toggle-dialog'])
+</script>
 <template>
   <v-app-bar color="primary">
     <v-spacer></v-spacer>
@@ -13,7 +15,7 @@
     </h1>
     <v-spacer></v-spacer>
     <v-spacer></v-spacer>
-    <v-btn icon>
+    <v-btn icon @click="$emit('toggle-dialog')">
       <v-icon>mdi-plus</v-icon>
     </v-btn>
     <v-btn icon>
