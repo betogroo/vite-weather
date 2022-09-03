@@ -2,7 +2,7 @@
 defineEmits(['toggle-dialog'])
 </script>
 <template>
-  <v-app-bar color="primary">
+  <v-app-bar color="primary" elevation="16">
     <v-spacer></v-spacer>
     <h1 class="text-h6">
       <router-link

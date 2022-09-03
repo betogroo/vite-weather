@@ -1,4 +1,5 @@
 import { RouteRecordRaw } from 'vue-router'
+import CityView from '@/views/CityView.vue'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -10,6 +11,11 @@ const routes: RouteRecordRaw[] = [
     path: '/about',
     name: 'AboutView',
     component: () => import('@/views/AboutView.vue')
+  },
+  {
+    path: '/cityview/:state/:city',
+    name: 'CityView',
+    component: CityView
   },
   {
     path: '/:catchAll(.*)',
