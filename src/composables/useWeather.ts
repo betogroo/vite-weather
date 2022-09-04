@@ -1,4 +1,18 @@
+import router from '@/router'
 import axios from 'axios'
+import { uid } from 'uid'
+import { ref } from 'vue'
+import { LocationQueryValue } from 'vue-router'
+const savedCities = ref<locationObj[]>([])
+interface locationObj {
+  id: string
+  state: string | string[]
+  city: string | string[]
+  coords: {
+    lat: LocationQueryValue | LocationQueryValue[]
+    lng: LocationQueryValue | LocationQueryValue[]
+  }
+}
 const useWeather = () => {
   const getWeatherData = async (currentRoute: any) => {
     const route = currentRoute
@@ -23,7 +37,28 @@ const useWeather = () => {
       console.log(err)
     }
   }
-  return { getWeatherData }
+
+  const addCity = () => {
+    const route = router.currentRoute.value
+    if (localStorage.getItem('savedCities')) {
+      savedCities.value = JSON.parse(localStorage.getItem('savedCities'))
+    }
+    const locationObj = {
+      id: uid(),
+      state: route.params.state,
+      city: route.params.city,
+      coords: {
+        lat: route.query.lat,
+        lng: route.query.lng
+      }
+    }
+    savedCities.value.push(locationObj)
+    localStorage.setItem('savedCities', JSON.stringify(savedCities.value))
+    const query = Object.assign({}, route.query)
+    delete query.preview
+    router.replace({ query })
+  }
+  return { getWeatherData, addCity }
 }
 
 export default useWeather

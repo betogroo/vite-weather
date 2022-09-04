@@ -1,5 +1,8 @@
 <script setup lang="ts">
-defineEmits(['toggle-dialog'])
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+defineEmits(['toggle-dialog', 'add-city'])
 </script>
 <template>
   <v-app-bar color="primary" elevation="16">
@@ -15,7 +18,7 @@ defineEmits(['toggle-dialog'])
     </h1>
     <v-spacer></v-spacer>
     <v-spacer></v-spacer>
-    <v-btn icon>
+    <v-btn v-if="route.query.preview" icon @click="$emit('add-city')">
       <v-icon>mdi-plus</v-icon>
     </v-btn>
     <v-btn icon @click="$emit('toggle-dialog')">

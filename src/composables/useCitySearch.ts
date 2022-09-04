@@ -36,7 +36,8 @@ const useCitySearch = () => {
       params: { state: state.replaceAll(' ', ''), city: city },
       query: {
         lat: item.geometry.coordinates[1],
-        lng: item.geometry.coordinates[0]
+        lng: item.geometry.coordinates[0],
+        preview: 'true'
       }
     }
     return route
