@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import useCitySearch from '@/composables/useCitySearch'
+import useCity from '@/composables/useCity'
 import CityList from '@/components/CityList.vue'
 
 const {
@@ -9,7 +9,7 @@ const {
   getSearchResults,
   makeRoute,
   resetSearchResults
-} = useCitySearch()
+} = useCity()
 resetSearchResults()
 </script>
 

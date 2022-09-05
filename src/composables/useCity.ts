@@ -8,7 +8,8 @@ const mapboxAPIKEY =
 const queryTimeout = ref()
 const mapboxSearchResults = ref<SearchResults | null>(null)
 const searchError = ref(false)
-const useCitySearch = () => {
+const savedCities = ref([])
+const useCity = () => {
   const searchText = ref<string>('')
 
   const getSearchResults = () => {
@@ -47,14 +48,35 @@ const useCitySearch = () => {
     return route
   }
 
+  const getCities = async () => {
+    if (localStorage.getItem('savedCities')) {
+      savedCities.value = JSON.parse(localStorage.getItem('savedCities'))
+    }
+    const requests: any[] = []
+    savedCities.value.forEach((city) => {
+      requests.push(
+        axios.get(
+          `https://api.openweathermap.org/data/2.5/weather?lat=${city.coords.lat}&lon=${city.coords.lng}&units=metric&lang=pt_br&appid=be3cef53311400c687dc269e6894e693`
+        )
+      )
+    })
+    const weatherData = await Promise.all(requests)
+
+    weatherData.forEach((value, index) => {
+      savedCities.value[index].weather = value.data
+    })
+  }
+
   return {
     searchText,
     mapboxSearchResults,
     searchError,
+    savedCities,
     getSearchResults,
     makeRoute,
-    resetSearchResults
+    resetSearchResults,
+    getCities
   }
 }
 
-export default useCitySearch
+export default useCity

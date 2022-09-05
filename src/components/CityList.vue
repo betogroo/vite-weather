@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import useCityList from '@/composables/useCityList'
+import useCity from '@/composables/useCity'
 import CityCard from '@/views/CityCard.vue'
 import { useRouter } from 'vue-router'
-const { savedCities, getCities } = useCityList()
+const { savedCities, getCities } = useCity()
 const router = useRouter()
 await getCities()
 const goToCityView = (city) => {
