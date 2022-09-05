@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import useCitySearch from '@/composables/useCitySearch'
+import CityList from '@/components/CityList.vue'
 
 const {
   searchText,
@@ -45,6 +46,12 @@ resetSearchResults()
         >
       </template>
     </v-list>
+  </div>
+  <div>
+    <Suspense>
+      <CityList />
+      <template #fallback>Loading...</template>
+    </Suspense>
   </div>
 </template>
 
