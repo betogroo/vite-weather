@@ -6,7 +6,7 @@ type SearchResults = any
 const mapboxAPIKEY =
   'pk.eyJ1IjoiYmV0b2dyb28iLCJhIjoiY2w3YXV4dnF4MGprajN5cWZheHViMWFwYSJ9.b6PseWAMngHc6ua_DfvRtQ'
 const queryTimeout = ref()
-const mapboxSearchResults = ref<SearchResults>()
+const mapboxSearchResults = ref<SearchResults | null>(null)
 const searchError = ref(false)
 const useCitySearch = () => {
   const searchText = ref<string>('')
@@ -29,6 +29,10 @@ const useCitySearch = () => {
     }, 300)
   }
 
+  const resetSearchResults = () => {
+    mapboxSearchResults.value = null
+  }
+
   const makeRoute = (item: SearchResults) => {
     const [city, state] = item.place_name.trim().split(',')
     const route: RouteLocationRaw = {
@@ -46,8 +50,10 @@ const useCitySearch = () => {
   return {
     searchText,
     mapboxSearchResults,
+    searchError,
     getSearchResults,
-    makeRoute
+    makeRoute,
+    resetSearchResults
   }
 }
 
