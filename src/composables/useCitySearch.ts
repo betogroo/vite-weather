@@ -37,7 +37,7 @@ const useCitySearch = () => {
     const [city, state] = item.place_name.trim().split(',')
     const route: RouteLocationRaw = {
       name: 'CityView',
-      params: { state: state.replaceAll(' ', ''), city: city },
+      params: { state: state.trim(), city: city },
       query: {
         lat: item.geometry.coordinates[1],
         lng: item.geometry.coordinates[0],
