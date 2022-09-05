@@ -15,9 +15,9 @@ const myCustomLightTheme: ThemeDefinition = {
     secondary: '#29665F',
     'secondary-darken-1': '#112C29',
     error: '#B00020',
-    info: '#2196F3',
+    info: '#99B2DD',
     success: '#4CAF50',
-    warning: '#FB8C00'
+    warning: '#D3B38D'
   }
 }
 

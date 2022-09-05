@@ -8,7 +8,7 @@ const weatherData = await getWeatherData(route)
 </script>
 
 <template>
-  <v-alert v-if="route.query.preview" color="warning" class="ma-4"
+  <v-alert v-if="route.query.preview" type="warning" class="ma-4"
     >Você está vendo esta cidade. Clique no "+" para rastreá-la</v-alert
   >
   <div class="d-flex flex-column align-center justify-center">
