@@ -50,7 +50,9 @@ resetSearchResults()
   <div>
     <Suspense>
       <CityList />
-      <template #fallback>Loading...</template>
+      <template #fallback>
+        <AppOverlayLoading />
+      </template>
     </Suspense>
   </div>
 </template>
