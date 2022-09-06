@@ -5,22 +5,38 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'HomeView',
-    component: () => import('@/views/HomeView.vue')
+    component: () => import('@/views/HomeView.vue'),
+    meta: {
+      title: 'Home',
+      requiresAuth: false
+    }
   },
   {
     path: '/about',
     name: 'AboutView',
-    component: () => import('@/views/AboutView.vue')
+    component: () => import('@/views/AboutView.vue'),
+    meta: {
+      title: 'Sobre',
+      requiresAuth: false
+    }
   },
   {
     path: '/cityview/:state/:city',
     name: 'CityView',
-    component: CityView
+    component: CityView,
+    meta: {
+      title: 'Tempo Agora',
+      requiresAuth: false
+    }
   },
   {
     path: '/:catchAll(.*)',
     name: 'NotFound',
-    component: () => import('@/views/NotFound.vue')
+    component: () => import('@/views/NotFound.vue'),
+    meta: {
+      title: 'Home',
+      requiresAuth: false
+    }
   }
 ]
 
