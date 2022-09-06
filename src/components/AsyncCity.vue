@@ -107,5 +107,12 @@ const weatherData = await getWeatherData(route)
       </div>
     </div>
   </div>
-  <v-btn @click="removeCity" block color="error">Excluir</v-btn>
+  <v-btn
+    v-if="!route.query.preview"
+    prepend-icon="mdi-delete"
+    @click="removeCity"
+    block
+    color="error"
+    >Excluir</v-btn
+  >
 </template>

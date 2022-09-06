@@ -56,6 +56,7 @@ const useWeather = () => {
     localStorage.setItem('savedCities', JSON.stringify(savedCities.value))
     const query = Object.assign({}, route.query)
     delete query.preview
+    query.id = locationObj.id
     router.replace({ query })
   }
   return { getWeatherData, addCity }
