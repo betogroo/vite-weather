@@ -2,8 +2,10 @@
 // import axios from 'axios'
 import { useRoute } from 'vue-router'
 import useWeatter from '@/composables/useWeather'
+import useCity from '@/composables/useCity'
 const route = useRoute()
 const { getWeatherData } = useWeatter()
+const { removeCity } = useCity()
 const weatherData = await getWeatherData(route)
 </script>
 
@@ -105,4 +107,5 @@ const weatherData = await getWeatherData(route)
       </div>
     </div>
   </div>
+  <v-btn @click="removeCity" block color="error">Excluir</v-btn>
 </template>

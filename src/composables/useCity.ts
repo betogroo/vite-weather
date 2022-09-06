@@ -67,6 +67,10 @@ const useCity = () => {
     })
   }
 
+  const removeCity = () => {
+    console.log('Deletando')
+  }
+
   return {
     searchText,
     mapboxSearchResults,
@@ -75,7 +79,8 @@ const useCity = () => {
     getSearchResults,
     makeRoute,
     resetSearchResults,
-    getCities
+    getCities,
+    removeCity
   }
 }
 
