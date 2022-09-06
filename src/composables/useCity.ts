@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import router from '@/router'
 import axios from 'axios'
 import { ref } from 'vue'
 import { RouteLocationRaw } from 'vue-router'
@@ -67,6 +68,16 @@ const useCity = () => {
     })
   }
 
+  const removeCity = () => {
+    const cities = JSON.parse(localStorage.getItem('savedCities'))
+    console.log(router.currentRoute.value.query.id)
+    const updatedCities = cities.filter(
+      (city: any) => city.id !== router.currentRoute.value.query.id
+    )
+    localStorage.setItem('savedCities', JSON.stringify(updatedCities))
+    router.push({ name: 'HomeView' })
+  }
+
   return {
     searchText,
     mapboxSearchResults,
@@ -75,7 +86,8 @@ const useCity = () => {
     getSearchResults,
     makeRoute,
     resetSearchResults,
-    getCities
+    getCities,
+    removeCity
   }
 }
 
