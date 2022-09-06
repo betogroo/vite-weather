@@ -5,6 +5,8 @@ import AsyncCity from '@/components/AsyncCity.vue'
 <template>
   <Suspense>
     <AsyncCity />
-    <template #fallback> Loading... </template>
+    <template #fallback>
+      <AppOverlayLoading />
+    </template>
   </Suspense>
 </template>
